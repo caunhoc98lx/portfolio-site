@@ -2,7 +2,7 @@
 function App() {
   return (
     <div>
-      <h2>this is a portfolio site </h2>
+      <h2>this is a portfolio site</h2>
     </div>
   )
 }
