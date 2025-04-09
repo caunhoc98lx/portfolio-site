@@ -12,11 +12,12 @@ import Experience from './components/sections/Experience';
 import Projects from './components/sections/Projects';
 import OtherProjects from './components/sections/OtherProjects';
 import Contact from './components/sections/Contact';
+import Footer from './components/Footer';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [showContent, setShowContent] = useState(false);
-  //const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   const handleLoaderLoaded = () => {
     setIsLoading(false);
@@ -24,13 +25,62 @@ function App() {
   };
 
   useEffect(() => {
-    handleLoaderLoaded()
+    // Check if device is mobile
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
 
-  }, [])
+    // Initial check
+    checkMobile();
+
+    // Add resize listener
+    window.addEventListener('resize', checkMobile);
+
+    const links = document.querySelectorAll('nav > .hover-this');
+
+    const animateit = () => {
+      if (isMobile) return; // Skip animation on mobile
+    };
+
+    const editCursor = () => {
+      if (isMobile) return; // Skip cursor update on mobile
+    };
+
+    const handleMouseDown = () => {
+      if (isMobile) return; // Skip click animation on mobile
+    };
+
+    if (!isMobile) {
+      // Only add event listeners on desktop
+      links.forEach((link) => link.addEventListener('mousemove', animateit));
+      links.forEach((link) => link.addEventListener('mouseleave', animateit));
+      window.addEventListener('mousemove', editCursor);
+      window.addEventListener('mousedown', handleMouseDown);
+    }
+
+    // Add fade-in effect
+    const mainContent = document.querySelector('main');
+    if (mainContent) {
+      mainContent.classList.add('fade-in');
+      setTimeout(() => {
+        mainContent.classList.add('show');
+      }, 100);
+    }
+
+    return () => {
+      // Clean up event listeners
+      window.removeEventListener('resize', checkMobile);
+      if (!isMobile) {
+        links.forEach((link) => link.removeEventListener('mousemove', animateit));
+        links.forEach((link) => link.removeEventListener('mouseleave', animateit));
+        window.removeEventListener('mousemove', editCursor);
+        window.removeEventListener('mousedown', handleMouseDown);
+      }
+    };
+  }, [isMobile]);
 
   return (
     <div className="app">
-      <h2>this is a portfolio site</h2>
       {showContent && (
         <>
           <Navbar />
@@ -56,9 +106,9 @@ function App() {
               <Contact />
             </Suspense>
           </main>
-          {/* <Suspense fallback={<div className="footer-loader">Loading footer...</div>}>
+          <Suspense fallback={<div className="footer-loader">Loading footer...</div>}>
             <Footer />
-          </Suspense> */}
+          </Suspense>
         </>
       )}
       <Loader isLoading={isLoading} setIsLoading={handleLoaderLoaded} />

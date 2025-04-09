@@ -56,7 +56,7 @@ function Banner() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.4, ease: 'easeInOut', delay: 1.2 }}
                 >
-                    I&apos;m a software developer focusing on exceptional digital experiences.
+                    I&apos;m a software developer focusing on building website.
                 </motion.p>
                 <motion.div
                     className="hero-button"
@@ -66,8 +66,8 @@ function Banner() {
                 >
                     <Button
                         text="Check out my LinkedIn"
-                        link="https://linkedin.com/in/kollurilohit"
-                        aria-label="LinkedIn profile of Lohit Kolluri"
+                        link="https://www.linkedin.com/in/anthony-hien-1785b3233/"
+                        aria-label="LinkedIn profile of Tran Hien"
                     />
                 </motion.div>
             </motion.div>

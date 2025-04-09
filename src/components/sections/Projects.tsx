@@ -4,38 +4,38 @@ import { ExternalLink, Github } from 'lucide-react';
 function Projects() {
   const projectsData = [
     {
-      image: '/projects/project1.webp',
+      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0jCa5pY_QUl8CWPXXxRGQ_jnYYtHSO_D6hw&s',
       projectName: 'NLP2SQL',
       projectLink: 'https://nlp2sql.streamlit.app/',
       projectDescription:
         'A natural language to SQL query converter that transforms text input into structured SQL queries for database execution, streamlining database interactions through intuitive language processing.',
       projectTech: ['Streamlit', 'Azure OpenAI', 'SQLite3', 'Altair'],
       projectExternalLinks: {
-        github: 'https://github.com/lohitkolluri/NLP2SQL',
+        github: 'https://github.com/tran-hien/NLP2SQL',
         externalLink: 'https://nlp2sql.streamlit.app/',
       },
     },
     {
-      image: '/projects/project2.webp',
+      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgbNxyPHfjdzgfCtC4J8Zvh6jX9YvbQW3mmw&s',
       projectName: 'FlaskPost',
       projectLink: 'https://flask-post.vercel.app/',
       projectDescription:
         'A FastAPI-powered mass email platform featuring SMTP configuration, CSV recipient management, and HTML template customization with live preview functionality.',
       projectTech: ['FastAPI', 'REST API', 'Jinja2', 'Fast Mail'],
       projectExternalLinks: {
-        github: 'https://github.com/lohitkolluri/FlaskPost',
-        externalLink: 'https://github.com/lohitkolluri/FlaskPost',
+        github: 'https://github.com/tran-hien/FlaskPost',
+        externalLink: 'https://github.com/tran-hien/FlaskPost',
       },
     },
     {
-      image: '/projects/project3.webp',
+      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9qZndTrU-z_PAn_eHaq6U01mHGT0r7Pwmyg&s',
       projectName: 'Compile Vortex',
       projectLink: 'https://compile-vortex.vercel.app/',
       projectDescription:
         'A web-based code editor supporting 40+ programming languages with customizable themes and real-time compilation capabilities.',
       projectTech: ['React', 'Node.js', 'Judge0 Api', 'Microsoft Azure'],
       projectExternalLinks: {
-        github: 'https://github.com/lohitkolluri/CompileVortex',
+        github: 'https://github.com/tran-hien/CompileVortex',
         externalLink: 'https://compile-vortex.vercel.app/',
       },
     },

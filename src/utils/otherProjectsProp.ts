@@ -16,8 +16,8 @@ const repositories: Repository[] = [
         description:
             'Dynamic GitHub status updater that displays your real-time coding activity using WakaTime data.',
         language: ['Node.Js', 'GitHub', 'WakaTime', 'Netlify'],
-        html_url: 'https://github.com/lohitkolluri/GitHub-Dynamic-Status',
-        homepage: 'https://github.com/lohitkolluri/GitHub-Dynamic-Status',
+        html_url: 'https://github.com/tran-hien/GitHub-Dynamic-Status',
+        homepage: 'https://github.com/tran-hien/GitHub-Dynamic-Status',
         updated_at: '2023-01-01T00:00:00Z',
     },
     {
@@ -26,8 +26,8 @@ const repositories: Repository[] = [
         description:
             'FlaskPost is a user-friendly web app for sending personalized mass emails, built with FastAPI.',
         language: ['FastAPI', 'FastMail', 'Jinja2', 'REST API'],
-        html_url: 'https://github.com/lohitkolluri/FlaskPost',
-        homepage: 'https://flask-post.vercel.app/',
+        html_url: 'https://github.com/tran-hien/FlaskPost',
+        homepage: 'https://flask-post.z.app/',
         updated_at: '2023-02-01T00:00:00Z',
     },
     {
@@ -36,7 +36,7 @@ const repositories: Repository[] = [
         description:
             'CompileVortex is a web-based code editor supporting over 40 programming languages with customizable themes.',
         language: ['React.js', 'TypeScript', 'Axios', 'Tailwind CSS'],
-        html_url: 'https://github.com/lohitkolluri/CompileVortex',
+        html_url: 'https://github.com/tran-hien/CompileVortex',
         homepage: 'https://compile-vortex.vercel.app/',
         updated_at: '2023-03-01T00:00:00Z',
     },
@@ -46,8 +46,8 @@ const repositories: Repository[] = [
         description:
             'PayloadMaster is a bash script for creating Metasploit payloads, setting up listeners, and exploiting Windows targets.',
         language: ['Bash', 'Metasploit'],
-        html_url: 'https://github.com/lohitkolluri/PayloadMaster',
-        homepage: 'https://github.com/lohitkolluri/PayloadMaster',
+        html_url: 'https://github.com/tran-hien/PayloadMaster',
+        homepage: 'https://github.com/tran-hien/PayloadMaster',
         updated_at: '2023-04-01T00:00:00Z',
     },
     {
@@ -56,7 +56,7 @@ const repositories: Repository[] = [
         description:
             'QuickMark Preview is a web app for writing and previewing Markdown in real-time, built with React.',
         language: ['React', 'React Markdown', 'Remark-GFM', 'ReHype-RAW', 'Tailwind CSS'],
-        html_url: 'https://github.com/lohitkolluri/QuickMark-Preview',
+        html_url: 'https://github.com/tran-hien/QuickMark-Preview',
         homepage: 'https://quikmarkpreview.vercel.app',
         updated_at: '2023-05-01T00:00:00Z',
     },
@@ -66,7 +66,7 @@ const repositories: Repository[] = [
         description:
             'My personal portfolio website built using Next.js, showcasing projects, skills, and experience in software engineering.',
         language: ['Next.js', 'React', 'Framer Motion', 'Tailwind CSS'],
-        html_url: 'https://github.com/lohitkolluri/Portfolio',
+        html_url: 'https://github.com/tran-hien/Portfolio',
         homepage: 'https://lohit.is-a.dev',
         updated_at: '2023-06-01T00:00:00Z',
     },

@@ -1,7 +1,16 @@
-export default function Footer() {
+function Footer() {
   return (
-    <footer className="bg-black p-[7%]">
-        <p className="text-6xl font-bold text-center">Let's connect to Tran Hien</p>
+    <footer>
+      <a
+        href="https://github.com/caunhoc98lx"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="footer-link"
+      >
+        <span className="footer-info">View on GitHub</span>
+      </a>
     </footer>
   );
 }
+
+export default Footer;

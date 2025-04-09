@@ -47,7 +47,7 @@ nav {
       color: var(--lightest-slate);
       font-family: var(--fira-code);
       font-weight: 500;
-      font-size: var(--tsm1);
+      font-size: var(--tlarge);
       counter-reset: nav-list;
       transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
       text-align: left;
@@ -55,6 +55,7 @@ nav {
         display: flex;
         gap: 3rem;
         list-style-type: none;
+        padding-top: var(--tlarge);
         &-item {
           a {
             outline: 2px dashed transparent;
@@ -76,6 +77,9 @@ nav {
             color: var(--theme-color);
           }
         }
+      }
+      &-button{
+        padding-top: var(--tlarge);
       }
     }
 

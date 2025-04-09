@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 
 const Contact = () => {
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -15,7 +16,7 @@ const Contact = () => {
   });
 
   useEffect(() => {
-    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+    const publicKey = import.meta.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
     if (publicKey) {
       emailjs.init(publicKey);
     }
@@ -45,13 +46,13 @@ const Contact = () => {
 
     try {
       await emailjs.send(
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+        import.meta.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        import.meta.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
         {
           from_name: formData.name,
           reply_to: formData.email,
           message: formData.message,
-          to_name: 'Lohit Kolluri',
+          to_name: 'Tran Hien',
         },
       );
 

@@ -1,3 +1,5 @@
-@import './variables';
-@import './components/';
-@import './sections/';
+@use "./variables";
+@use "./components";
+@use "./sections";
+@use '@fontsource/fira-code'; // Default weight 400
+@use '@fontsource/raleway';
