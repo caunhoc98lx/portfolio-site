@@ -1,6 +1,8 @@
 import { motion, useInView } from 'framer-motion';
 import { useEffect, useRef, useState, useCallback } from 'react';
 
+import personalImage from  "../../assets/images/image-2.jpg"
+
 interface AboutText {
   intro: string;
   experience: string;
@@ -10,23 +12,31 @@ const mobileText: AboutText = {
   intro:
     'Hey there! I\'m Tran Hien, a Full Stack Developer passionate about coding website',
   experience:
-    'Currently pursuing B.Tech at FPT, I\'ve built scalable architectures at Apollo Tyres R&D, supporting 200+ concurrent simulations with 40% performance boost.',
+    'Currently pursuing B.Tech at FPT, I\'m a Full Stack Developer with over 5 years of experience building modern web applications and scalable backend systems.',
 };
 
 const desktopText: AboutText = {
   intro:
-    'Hey there! I\'m Tran Hien, a Full Stack Developer. I specialize in building scalable infrastructures, optimizing CI/CD pipelines, and integrating ML systems into robust production environments.',
+    'Hey there! I\'m Tran Hien, a Full Stack Developer. I specialize in JavaScript frameworks like React.js and Vue.js for the frontend, and have strong backend experience with Node.js and .NET. I\'ve worked extensively with SPA architecture, leveraging tools like Redux, Axios, and i18n for rich user experiences. My UI work includes using Bootstrap, Material-UI, and Ant Design, delivering responsive, intuitive designs.',
   experience:
-    'Currently pursuing a B.Tech in FPT, I bring hands-on experience with platforms across the BE and FE. At Apollo Tyres R&D, I built a scalable backend architecture using Django and PostgreSQL to support 200+ concurrent simulations, increasing performance by 40%. I also automated simulation task queues and delivered real-time dashboards with Chart.js for 300+ engineering projects. I\'ve deployed cloud-native applications using Docker, Kubernetes, and serverless technologies like Vercel and AWS Lambda. My projects include an NLP-to-SQL Converter, and FlaskPost, a mass mailer SaaS with serverless backend that cut infrastructure costs while boosting engagement.',
+    'Currently pursuing a B.Tech in FPT, I bring hands-on experience with platforms across the BE and FE.  I enjoy diving into new technologies and quickly applying them to real-world projects.',
 };
 
-const technologies = [
-  'Docker',
+const technologiesFE = [
+  'React.js', 
+  'Vue.js', 
+  'HTML5', 
+  'CSS3', 
+  'JavaScript'
+];
+
+const technologiesBE = [
+  'Node.js',
   'Kubernetes',
-  'FastAPI',
-  'Azure',
+  'Strapi',
   'PostgreSQL',
-  'React.js'
+  "Nest.js",
+  "Express.js"
 ];
 
 const variants = {
@@ -80,13 +90,27 @@ function About() {
             {isMobile ? mobileText.experience : desktopText.experience}
           </p>
           <p className="about-grid-info-text text-justify">
-            Here are a few technologies I&apos;ve been working with recently:
+            Here are my Tech Stack I&apos;ve been working:
           </p>
 
+          <p className="about-grid-info-text text-justify">
+            Backend
+          </p>
           <ul className="about-grid-info-list">
-            {technologies.map((tech) => (
+            {technologiesBE.map((tech) => (
               <li key={tech} className="about-grid-info-list-item">
-                {tech}
+              <h4>{tech}</h4>
+            </li>
+            ))}
+          </ul>
+
+          <p className="about-grid-info-text text-justify">
+            Frontend
+          </p>
+          <ul className="about-grid-info-list">
+            {technologiesFE.map((tech) => (
+              <li key={tech} className="about-grid-info-list-item">
+                <h4>{tech}</h4>
               </li>
             ))}
           </ul>
@@ -96,10 +120,9 @@ function About() {
           <div className="overlay-border"></div>
           <div className="about-grid-photo-container">
             <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNwE6eqc3_Y8bdjwTeZ3fx16OpUccQ6dyakw&s"
-              alt="Tran Hien - DevOps & Full Stack Developer"
-              sizes="(max-width: 768px) 100vw, 50vw"
-              className="rounded-lg"
+              src= {personalImage}
+              alt="Tran Hien - Full Stack Developer"
+              className="about-grid-photo-container-personal"
               aria-label="Profile picture of Tran Hien"
             />
           </div>

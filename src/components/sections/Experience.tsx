@@ -14,52 +14,96 @@ function Experience() {
 
   const experiences = [
     {
-      name: 'Apollo Tyres R&D',
-      role: 'Project Trainee',
-      url: 'https://www.apollotyres.com/',
+      name: 'Income Insurance',
+      role: 'Full-Stack Developer',
+      start: 'Feb 2023',
+      end: 'Feb 2024',
+      shortDescription: [
+        'Development for BE service API of Income company and UI for create voucher. Providing the solution for creating the voucher to Income.',
+      ],
+      responsibilities: [
+        'Create structure of project source code using NestJS framework 9.3 and NextJS version 12',
+        'Design relational database using MySQL, discuss and get approval from customer.',
+        'Develop and manage server-side components.',
+        'Handle both backend and frontend.',
+        'Identify and implement data storage solutions with AWS S3.',
+        'Perform diagnostic tests, fix bugs, and provide technical support to users'
+      ]
+    },
+    {
+      name: 'Insurance Project',
+      role: 'Senior Developer',
+      start: 'Nov 2022',
+      end: 'Feb 2023',
+      shortDescription: [
+        'Develop a landing page for Insurance Company in HongKong',
+      ],
+      responsibilities: [
+        'Develop new features.',
+        'Fix bug and give solution if any',
+        'Optimize code: Performance, State management, Scalability.',
+        'Handle both backend and frontend.',
+        'Communication with customer.'
+      ]
+    },
+    {
+      name: 'DoH',
+      role: 'Senior Developer',
       start: 'February 2024',
       end: 'May 2024',
       shortDescription: [
-        'Architected a robust backend using Django and PostgreSQL to handle over 200 concurrent simulations, resulting in a 40% improvement in system performance and data retrieval efficiency.',
-        'Designed and implemented an interactive dashboard utilizing Chart.js, allowing managers to monitor job assignments and completion rates; enabled tracking of individual engineer performance across 300+ projects in real time.',
-        'Streamlined task management for a system handling over 1,000 tasks daily.',
-        'Developed a web application that optimized the simulation workflow for Apollo Tyres, enhancing task allocation efficiency by approximately 30%.',
+        'Health care: Web application and Web engineering. Create responsive admin dashboard using ReactJS.',
       ],
+      responsibilities: [
+        'Develop new features: Use React 17 and Ant design to create responsive admin dashboard.',
+        'Optimize code: Performance, State management, Scalability.',
+        'Handle both backend and frontend.',
+        'Communication with customer.'
+      ]
     },
     {
-      name: 'EduSkill Foundation',
-      role: 'Artificial Intelligence Intern',
-      url: 'https://www.eduskillsfoundation.org',
-      start: 'September 2023',
-      end: 'November 2023',
+      name: 'Application MBank',
+      role: 'Developer',               
+      start: 'Jun 2020',
+      end: 'May 2021',
       shortDescription: [
-        'Completed AWS Machine Learning and AWS Cloud Practitioner courses, gaining proficiency in deploying and scaling ML models on AWS services such as S3, Elastic Container Service, and Lambda.',
-        'Acquired cloud computing skills, including cloud security, architecture, and networking in the AWS ecosystem.',
+        'Develop a management system for bank services and export data',
       ],
+      responsibilities: [
+        'Develop features using ReactJs: use bootstrap css and Material UI to create dashboard manage user and role, permission define who can assess to the system.',
+        'Export data to file word: write the query to get all information in database and bind it to file word handle by .Net Core.',
+        'Problem solving if any',
+        'Optimize code: Use lazy loading, Performance, State management, Scalability'
+      ]
     },
     {
-      name: 'MathWorks',
-      role: 'Virtual Intern',
-      url: 'https://www.mathworks.com',
-      start: 'May 2023',
-      end: 'September 2023',
+      name: 'Services Online HaNoi',
+      role: 'Developer',
+      start: 'Apr 2019',
+      end: 'May 2020',
       shortDescription: [
-        'Completed advanced courses in utilizing AI tools provided by MathWorks.',
-        'Gained proficiency in data analysis, model development, and AI tools like MATLAB.',
-        'Specialized in machine learning models for clustering, classification, and deep learning techniques for image classification.',
+        'This is the web that helps people register documents without going to the office',
       ],
+      responsibilities: [
+        'Develop wire frame following the requirement',
+        'Develop using ReactJS',
+        'Problem solving if any',
+        'Optimize code: Use lazy loading, Performance, State management, Scalability'
+      ]
     },
+
     {
-      name: 'Edunet Foundation',
-      role: 'AI Intern',
-      url: 'https://www.edunetfoundation.org',
-      start: 'June 2023',
-      end: 'July 2023',
+      name: 'Application Education',
+      role: 'Developer Intern',
+      start: 'May 2018',
+      end: 'Mar 2019',
       shortDescription: [
-        'Developed a precise Mental Health Fitness Tracker using Python and scikit-learn.',
-        'Improved model accuracy to 98.5% through feature engineering and ensemble methods.',
-        'Utilized 12 regression algorithms for mental fitness analysis across 150+ countries.',
+        'This is the web that helps people student management, class schedules, grades, enrollment registration online.',
       ],
+      responsibilities: [
+        'Develop features using ReactJS',
+        'Optimize code: Performance, State management, Scalability'
+      ]
     },
   ];
 
@@ -67,7 +111,7 @@ function Experience() {
     <motion.div
       className="experience"
       id="experience"
-      style={{ paddingTop: '250px' }}
+      style={{ paddingTop: '80px' }}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
@@ -99,9 +143,9 @@ function Experience() {
               <span>{experiences[selected].role}</span>
               <span className="exp-details-position-company">
                 &nbsp;@&nbsp;
-                  <a target="_blank" rel="noopener noreferrer" className="link">
-                    {experiences[selected].name}
-                  </a>
+                <a target="_blank" rel="noopener noreferrer" className="link">
+                  {experiences[selected].name}
+                </a>
               </span>
             </h3>
             <p className="exp-details-range">
@@ -109,6 +153,14 @@ function Experience() {
             </p>
             <ul className="exp-details-list">
               {experiences[selected].shortDescription.map((description, index) => (
+                <li key={index} className="exp-details-list-item">
+                  {description}
+                </li>
+              ))}
+            </ul>
+            <h4 className='exp-details-title'>Responsibilities</h4>
+            <ul className="exp-details-list">
+              {experiences[selected].responsibilities.map((description, index) => (
                 <li key={index} className="exp-details-list-item">
                   {description}
                 </li>
