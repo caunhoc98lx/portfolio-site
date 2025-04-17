@@ -17,7 +17,7 @@ function Email() {
             className="email-link"
             aria-label="Email Tran Hien"
           >
-            anthonyhien98@gmail.com
+            tran-hien
           </a>
         </motion.div>
       );

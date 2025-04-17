@@ -1,4 +1,4 @@
-import { AnimatePresence, motion, Variants } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useEffect } from "react";
 import PropTypes from 'prop-types';
 
@@ -30,20 +30,6 @@ function Loader({ isLoading, setIsLoading }: LoaderProps) {
         exit: { opacity: 0, scale: 0.8, transition: { duration: 0.6 } },
     };
 
-    const pathVariants = {
-        hidden: { pathLength: 0, opacity: 0 },
-        visible: {
-            pathLength: 1,
-            opacity: 1,
-            transition: {
-                duration: 2.5,
-                ease: 'easeInOut',
-                repeat: Infinity,
-                repeatType: 'reverse',
-            },
-        },
-    };
-
     return (
         <AnimatePresence>
             {isLoading && (
@@ -63,49 +49,44 @@ function Loader({ isLoading, setIsLoading }: LoaderProps) {
                             </linearGradient>
                         </defs>
                         <g>
-                            {/* Letter L */}
+                            {/* -----start draw the letter H------ */}
                             <motion.rect
-                                x="15"
+                                x="10"
                                 y="15"
                                 width="20"
-                                height="70"
+                                height="80"
                                 fill="url(#grad1)"
                                 stroke="#8892AF"
                                 strokeWidth="2"
                                 variants={svgVariants}
                                 custom={1}
                             />
+
                             <motion.rect
-                                x="15"
-                                y="65"
-                                width="50"
+                                x="65"
+                                y="15"
+                                width="20"
+                                height="80"
+                                fill="url(#grad1)"
+                                stroke="#8892AF"
+                                strokeWidth="2"
+                                variants={svgVariants}
+                                custom={1.25}
+                            />
+
+                            <motion.rect
+                                x="32"
+                                y="48"
+                                width="31"
                                 height="20"
                                 fill="url(#grad1)"
                                 stroke="#8892AF"
                                 strokeWidth="2"
                                 variants={svgVariants}
-                                custom={1.5}
+                                custom={1.25}
                             />
-
-                            {/* Letter K */}
-                            <motion.path
-                                d="M 65 15 L 65 55 L 45 35 L 65 15 L 85 15 L 65 55 L 85 95 L 65 95 L 65 55"
-                                fill="url(#grad1)"
-                                stroke="#8892AF"
-                                strokeWidth="2"
-                                variants={pathVariants as Variants}
-                            />
-
-                            {/* Additional Shapes */}
-                            <motion.circle
-                                cx="25"
-                                cy="25"
-                                r="5"
-                                fill="#CCD6F6"
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                transition={{ repeat: Infinity, repeatType: 'reverse', duration: 2 }}
-                            />
+                            {/* -----end draw the letter H------ */}
+                            
                             <motion.circle
                                 cx="75"
                                 cy="75"
@@ -141,7 +122,7 @@ function Loader({ isLoading, setIsLoading }: LoaderProps) {
                             <motion.circle
                                 cx="50"
                                 cy="50"
-                                r="40"
+                                r="50"
                                 fill="none"
                                 stroke="#CCD6F6"
                                 strokeWidth="2"

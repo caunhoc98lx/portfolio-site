@@ -84,7 +84,7 @@ const OtherProjects: React.FC = () => {
         <Button
           className="styled-button"
           text="View More"
-          link="https://github.com/tran-hien"
+          link="https://github.com/caunhoc98lx?tab=repositories"
           aria-label="View more projects on GitHub"
         />
       </div>

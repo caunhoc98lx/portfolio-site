@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import './scss/globals.css';
 import './scss/index.scss';
 
@@ -14,7 +13,7 @@ import Projects from './components/sections/Projects';
 import OtherProjects from './components/sections/OtherProjects';
 import Contact from './components/sections/Contact';
 import Footer from './components/Footer';
-import fluidCursor from './hooks/useFluidCursor';
+import BubbleCursor from './components/common/BubbleCursor';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -81,44 +80,40 @@ function App() {
     };
   }, [isMobile]);
 
-  useEffect(() => {
-    fluidCursor();
-  }, [])
-
 
   return (
     <div className='dark'>
-      <canvas id='fluid' style={{ height: '100vh', width: '100vw' }} />
-      {showContent && (
-        <>
-          <Navbar />
-          <Suspense fallback={<div className="loading-icon">Loading...</div>}>
-            <SocialIcons />
-            <Email />
-          </Suspense>
-          <main style={{ paddingTop: '60px' }} className="fade-in">
-            <Banner />
-            <Suspense fallback={<div className="section-loader">Loading about section...</div>}>
-              <About />
+      <BubbleCursor />
+        {showContent && (
+          <>
+            <Navbar />
+            <Suspense fallback={<div className="loading-icon">Loading...</div>}>
+              <SocialIcons />
+              <Email />
             </Suspense>
-            <Suspense
-              fallback={<div className="section-loader">Loading experience section...</div>}
-            >
-              <Experience />
+            <main style={{ paddingTop: '60px' }} className="fade-in">
+              <Banner />
+              <Suspense fallback={<div className="section-loader">Loading about section...</div>}>
+                <About />
+              </Suspense>
+              <Suspense
+                fallback={<div className="section-loader">Loading experience section...</div>}
+              >
+                <Experience />
+              </Suspense>
+              <Suspense fallback={<div className="section-loader">Loading projects section...</div>}>
+                <Projects />
+                <OtherProjects />
+              </Suspense>
+              <Suspense fallback={<div className="section-loader">Loading contact section...</div>}>
+                <Contact />
+              </Suspense>
+            </main>
+            <Suspense fallback={<div className="footer-loader">Loading footer...</div>}>
+              <Footer />
             </Suspense>
-            <Suspense fallback={<div className="section-loader">Loading projects section...</div>}>
-              <Projects />
-              <OtherProjects />
-            </Suspense>
-            <Suspense fallback={<div className="section-loader">Loading contact section...</div>}>
-              <Contact />
-            </Suspense>
-          </main>
-          <Suspense fallback={<div className="footer-loader">Loading footer...</div>}>
-            <Footer />
-          </Suspense>
-        </>
-      )}
+          </>
+        )}
       <Loader isLoading={isLoading} setIsLoading={handleLoaderLoaded} />
     </div>
   )
