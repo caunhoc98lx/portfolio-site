@@ -10,10 +10,7 @@ export default function Navbar() {
         { name: 'About', link: '/#about' },
         { name: 'Experience', link: '/#experience' },
         { name: 'Work', link: '/#work' },
-        {
-            name: 'Contact',
-            link: '/#contact',
-        },
+        { name: 'Contact', link: '/#contact' },
     ];
     return (
         <nav>
@@ -43,6 +40,7 @@ export default function Navbar() {
                             onClick={(e) => {
                                 e.stopPropagation();
                                 setResponsiveNavVisible(false);
+                                
                             }}
                             size={24} // Customize size if needed
                         />
@@ -67,7 +65,7 @@ export default function Navbar() {
                     }}
                 >
                     <ul className="nav-items-list">
-                        {sectionLinks.map(({ name }, index) => (
+                        {sectionLinks.map(({ name, link }, index) => (
                             <motion.li
                                 key={name}
                                 className="nav-items-list-item"
@@ -78,8 +76,19 @@ export default function Navbar() {
                                     ease: 'easeInOut',
                                     delay: 0.1 + index * 0.1,
                                 }}
+                                onClick={() => {
+                                    const sectionId = link.replace('/#', '');
+                                    const element = document.getElementById(sectionId);
+                                    // If element exists, scroll to it
+                                    if (element) {
+                                        console.log("element 2342", element)
+                                        element.scrollIntoView({ behavior: 'smooth' });
+                                        // Close responsive nav if open
+                                        setResponsiveNavVisible(false);
+                                    }
+                                }}
+                                style={{ cursor: 'pointer' }}
                             >
-
                                 {name}
                             </motion.li>
                         ))}
