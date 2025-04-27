@@ -2,6 +2,7 @@ import './scss/globals.css';
 import './scss/index.scss';
 
 import { Suspense, useEffect, useState } from "react"
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/common/Layout";
 import Loader from "./components/common/Loader";
 import SocialIcons from './components/sections/SocialIcons';
@@ -14,18 +15,30 @@ import OtherProjects from './components/sections/OtherProjects';
 import Contact from './components/sections/Contact';
 import Footer from './components/Footer';
 import BubbleCursor from './components/common/BubbleCursor';
+import NotFound from './components/NotFound';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [showContent, setShowContent] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  // const navigate = useNavigate();
 
   const handleLoaderLoaded = () => {
     setIsLoading(false);
     setTimeout(() => setShowContent(true), 450);
   };
-
+  
+  // const handleOffline = () => {
+  //   console.log("    You are offline. Please check your internet connection.");
+  //   if (!navigator.onLine) {
+  //     navigate('/notfound'); // Redirect to /notfound when offline
+  //   }
+  // };
   useEffect(() => {
+    // Add event listener for offline status
+    // window.addEventListener('offline', handleOffline);
+
+
     // Check if device is mobile
     const checkMobile = () => {
       setIsMobile(window.innerWidth <= 768);
@@ -71,6 +84,7 @@ function App() {
     return () => {
       // Clean up event listeners
       window.removeEventListener('resize', checkMobile);
+      // window.removeEventListener('offline', handleOffline);
       if (!isMobile) {
         links.forEach((link) => link.removeEventListener('mousemove', animateit));
         links.forEach((link) => link.removeEventListener('mouseleave', animateit));
@@ -82,40 +96,43 @@ function App() {
 
 
   return (
-    <div className='dark'>
+    <Router basename='/portfolio-site'>
       <BubbleCursor />
-        {showContent && (
-          <>
-            <Navbar />
-            <Suspense fallback={<div className="loading-icon">Loading...</div>}>
-              <SocialIcons />
-              <Email />
+      {showContent && (
+        <>
+          <Navbar />
+          <Suspense fallback={<div className="loading-icon">Loading...</div>}>
+            <SocialIcons />
+            <Email />
+          </Suspense>
+          <main style={{ paddingTop: '60px' }} className="fade-in">
+            <Banner />
+            <Suspense fallback={<div className="section-loader">Loading about section...</div>}>
+              <About />
             </Suspense>
-            <main style={{ paddingTop: '60px' }} className="fade-in">
-              <Banner />
-              <Suspense fallback={<div className="section-loader">Loading about section...</div>}>
-                <About />
-              </Suspense>
-              <Suspense
-                fallback={<div className="section-loader">Loading experience section...</div>}
-              >
-                <Experience />
-              </Suspense>
-              <Suspense fallback={<div className="section-loader">Loading projects section...</div>}>
-                <Projects />
-                <OtherProjects />
-              </Suspense>
-              <Suspense fallback={<div className="section-loader">Loading contact section...</div>}>
-                <Contact />
-              </Suspense>
-            </main>
-            <Suspense fallback={<div className="footer-loader">Loading footer...</div>}>
-              <Footer />
+            <Suspense
+              fallback={<div className="section-loader">Loading experience section...</div>}
+            >
+              <Experience />
             </Suspense>
-          </>
-        )}
+            <Suspense fallback={<div className="section-loader">Loading projects section...</div>}>
+              <Projects />
+              <OtherProjects />
+            </Suspense>
+            <Suspense fallback={<div className="section-loader">Loading contact section...</div>}>
+              <Contact />
+            </Suspense>
+          </main>
+          <Suspense fallback={<div className="footer-loader">Loading footer...</div>}>
+            <Footer />
+          </Suspense>
+        </>
+      )}
+      <Routes>
+        <Route path='/notfound' element={<NotFound />} />
+      </Routes>
       <Loader isLoading={isLoading} setIsLoading={handleLoaderLoaded} />
-    </div>
+    </Router>
   )
 }
 

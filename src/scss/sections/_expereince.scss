@@ -177,10 +177,21 @@
   }
 
   @media screen and (max-width: 480px) {
+    .exp-details {
+      list-style: 27px;
+    }
     .title {
+      text-align: center;
+
       h2 {
         &::after {
-          display: none;
+          content: "";
+          display: block;
+          position: absolute;
+          top: 34px;
+          width: 272px;
+          height: 5px;
+          margin-left: 56px;
         }
       }
     }

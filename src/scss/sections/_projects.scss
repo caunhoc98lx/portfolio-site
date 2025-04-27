@@ -301,7 +301,9 @@
   }
 
   @media screen and (max-width: 600px) {
+    margin: 0;
     &-container {
+      gap: 6rem;
       .project {
         &-image {
           &-container {
@@ -357,8 +359,22 @@
       }
     }
 
-    .title h2::after {
-      display: none;
+    .title {
+      text-align: center;
+      padding-bottom: 1.5rem;
+      h2 {
+        &::after {
+          content: "";
+          display: block;
+          position: absolute;
+          top: 34px;
+          width: 318px;
+          height: 5px;
+          margin-left: 31px;
+        }
+      }
     }
   }
+
+
 }

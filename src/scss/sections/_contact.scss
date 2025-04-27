@@ -113,4 +113,8 @@
     background-color: rgba(231, 76, 60, 0.1);
     color: #e74c3c;
   }
+
+  @media screen and (max-width: 600px) {
+    margin: 5rem auto;
+  }
 }
