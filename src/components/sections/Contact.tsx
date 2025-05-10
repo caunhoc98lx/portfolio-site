@@ -9,7 +9,7 @@ const Contact = () => {
     email: '',
     message: '',
   });
-  const [status, setStatus] = useState({
+  const [status] = useState({
     submitting: false,
     submitted: false,
     error: null as string | null,
@@ -40,34 +40,7 @@ const Contact = () => {
     }));
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setStatus({ submitting: true, submitted: false, error: null });
-
-    try {
-      await emailjs.send(
-        import.meta.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
-        import.meta.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
-        {
-          from_name: formData.name,
-          reply_to: formData.email,
-          message: formData.message,
-          to_name: 'Tran Hien',
-        },
-      );
-
-      setStatus({ submitting: false, submitted: true, error: null });
-      setFormData({ name: '', email: '', message: '' });
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    } catch (error: any) {
-      const errorMessage = error.text || 'Failed to send message. Please try again.';
-      setStatus({
-        submitting: false,
-        submitted: false,
-        error: errorMessage,
-      });
-    }
-  };
+  console.log("test env", import.meta.env.VITE_USEBASIN_URL);
 
   return (
     <motion.div
@@ -90,7 +63,8 @@ const Contact = () => {
       </motion.p>
 
       <motion.form
-        onSubmit={handleSubmit}
+        action="https://usebasin.com/f/b1b0e89a9ba4"
+        method="POST"
         className="contact-form"
         variants={itemVariants}
         custom={3}
