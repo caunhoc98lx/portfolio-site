@@ -3,13 +3,7 @@ import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 
 const Contact = () => {
-
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
-  });
-  const [status] = useState({
+  const [status, setStatus] = useState({
     submitting: false,
     submitted: false,
     error: null as string | null,
@@ -32,15 +26,50 @@ const Contact = () => {
     hidden: { opacity: 0, y: 30 },
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setStatus({ submitting: true, submitted: false, error: null });
+    try {
+      
+      const formElement = e.target as HTMLFormElement;
+      console.log("formElement", formElement);
+      fetch("https://usebasin.com/f/b1b0e89a9ba4", {
+        method: "POST",
+        headers: {
+         "Accept": "application/json",
+        },
+        body: new FormData(formElement)
+       }).then((response) => {
+        if (response.status === 200) {
+          console.log("success");
+          formElement.reset(); // Reset the form after a successful response
+          setStatus({ submitting: false, submitted: true, error: null });
 
-  console.log("test env", import.meta.env.VITE_USEBASIN_URL);
+          setTimeout(() => {
+            setStatus({ submitting: false, submitted: false, error: null });
+          }, 5000);
+        } else {
+          console.log("fail");
+          setStatus({ submitting: false, submitted: false, error: "Failed to send message." });
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        setStatus({ submitting: false, submitted: false, error: "An error occurred." });
+      });
+
+
+      setStatus({ submitting: false, submitted: true, error: null });
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (error: any) {
+      const errorMessage = error.text || 'Failed to send message. Please try again.';
+      setStatus({
+        submitting: false,
+        submitted: false,
+        error: errorMessage,
+      });
+    }
+  };
 
   return (
     <motion.div
@@ -63,8 +92,7 @@ const Contact = () => {
       </motion.p>
 
       <motion.form
-        action="https://usebasin.com/f/b1b0e89a9ba4"
-        method="POST"
+        onSubmit={handleSubmit}
         className="contact-form"
         variants={itemVariants}
         custom={3}
@@ -73,8 +101,6 @@ const Contact = () => {
           <motion.input
             type="text"
             name="name"
-            value={formData.name}
-            onChange={handleChange}
             placeholder="Your Name"
             required
             className="form-input"
@@ -86,8 +112,6 @@ const Contact = () => {
           <motion.input
             type="email"
             name="email"
-            value={formData.email}
-            onChange={handleChange}
             placeholder="Your Email"
             required
             className="form-input"
@@ -98,8 +122,6 @@ const Contact = () => {
         <div className="form-group">
           <motion.textarea
             name="message"
-            value={formData.message}
-            onChange={handleChange}
             placeholder="Your Message"
             required
             className="form-textarea"
